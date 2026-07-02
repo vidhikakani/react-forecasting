@@ -1,70 +1,233 @@
-# Getting Started with Create React App
+# GitHub Repository Forecasting Platform
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A full-stack time-series forecasting application that predicts GitHub repository activity using machine learning. The application combines a React frontend with a Python/Flask backend to generate interactive forecasts from historical repository metrics using Facebook Prophet.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## Overview
 
-### `npm start`
+This project demonstrates the design and implementation of a full-stack machine learning application, integrating data visualization, REST APIs, and forecasting models into a single user-facing platform.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+The application allows users to analyze historical GitHub repository activity and generate future trend predictions through an interactive web interface.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## Features
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Interactive dashboard built with React and Material UI
+- Time-series forecasting using Facebook Prophet
+- REST API powered by Flask
+- Interactive visualization of historical and forecasted trends
+- Containerized application using Docker
+- Cloud-ready architecture for deployment on Google Cloud Platform
+- Modular frontend and backend architecture
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Architecture
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```
+                    GitHub Repository Metrics
+                               │
+                               ▼
+                    Data Collection Layer
+                               │
+                               ▼
+                   Data Preprocessing Pipeline
+                               │
+                               ▼
+                Facebook Prophet Forecast Model
+                               │
+                               ▼
+                     Flask REST API
+                               │
+                               ▼
+               React + Material UI Frontend
+                               │
+                               ▼
+                            End User
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+## Tech Stack
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Frontend
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- React
+- Material UI
+- JavaScript
+- HTML5
+- CSS3
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Backend
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- Python
+- Flask
+- Facebook Prophet
+- TensorFlow
 
-## Learn More
+### Infrastructure
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Docker
+- Nginx
+- Google Cloud Platform
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+---
 
-### Code Splitting
+## System Design
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+The application follows a layered architecture to separate user interface, application logic, and forecasting services.
 
-### Analyzing the Bundle Size
+### Frontend
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- React single-page application
+- Material UI components
+- API communication through HTTP requests
+- Interactive chart rendering
 
-### Making a Progressive Web App
+### Backend
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- Flask REST API
+- Forecast generation service
+- Time-series preprocessing
+- Machine learning inference
 
-### Advanced Configuration
+### Infrastructure
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- Docker containerization
+- Reverse proxy using Nginx
+- Cloud-ready deployment architecture
 
-### Deployment
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Forecasting Workflow
 
-### `npm run build` fails to minify
+1. User selects a GitHub repository.
+2. Historical repository metrics are retrieved.
+3. Data is cleaned and prepared for forecasting.
+4. Facebook Prophet generates future predictions.
+5. Results are returned through the REST API.
+6. Forecasts are displayed as interactive visualizations.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
+
+## API
+
+### Generate Forecast
+
+**POST**
+
+```
+/forecast
+```
+
+### Request
+
+```json
+{
+  "repository": "facebook/react",
+  "forecastDays": 30
+}
+```
+
+### Response
+
+```json
+{
+  "forecast": [
+    {
+      "date": "2022-08-01",
+      "value": 1542
+    }
+  ]
+}
+```
+
+---
+
+## Project Structure
+
+```
+react-forecasting/
+│
+├── public/
+├── src/
+├── Dockerfile
+├── nginx.default.conf
+├── package.json
+├── README.md
+└── ...
+```
+
+---
+
+## Running the Project
+
+### Clone the repository
+
+```bash
+git clone https://github.com/vidhikakani/react-forecasting.git
+```
+
+### Install dependencies
+
+```bash
+npm install
+```
+
+### Start the React application
+
+```bash
+npm start
+```
+
+### Build for production
+
+```bash
+npm run build
+```
+
+### Docker
+
+```bash
+docker build -t react-forecasting .
+
+docker run -p 3000:3000 react-forecasting
+```
+
+---
+
+## Future Enhancements
+
+- Support multiple forecasting models
+- Real-time GitHub API integration
+- User authentication
+- Historical model comparison
+- CI/CD pipeline automation
+- Kubernetes deployment
+- Performance monitoring and observability
+
+---
+
+## Engineering Concepts Demonstrated
+
+- Full-stack application development
+- Time-series forecasting
+- REST API design
+- Machine learning integration
+- Component-based frontend architecture
+- Docker containerization
+- Cloud-native application design
+
+---
+
+## Repository
+
+GitHub: https://github.com/vidhikakani/react-forecasting
+
+---
+
+## License
+
+This project is available under the MIT License.
