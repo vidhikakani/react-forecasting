@@ -228,6 +228,3 @@ GitHub: https://github.com/vidhikakani/react-forecasting
 
 ---
 
-## License
-
-This project is available under the MIT License.
